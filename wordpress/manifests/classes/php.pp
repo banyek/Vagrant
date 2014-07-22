@@ -2,6 +2,9 @@ class php {
   package { "php-fpm":
     ensure => installed
   }
+  package { "php-mysql":
+    ensure => installed
+  }
   file { '/etc/php-fpm.d/www.conf':
     ensure  => present,
     source  => 'puppet:///files/common/etc/php-fpm.d/www.conf',
@@ -11,5 +14,6 @@ class php {
   }
   service { "php-fpm":
     ensure => running,
+    require => Package['php-fpm'],
   }
 }

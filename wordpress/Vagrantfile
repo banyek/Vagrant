@@ -7,7 +7,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "web1" do |web1|
     web1.vm.box = "base"
     web1.vm.network "private_network", ip: "192.168.50.10"
-    web1.vm.network "forwarded_port", guest: 80, host: 8081
+    web1.vm.network "forwarded_port", guest: 80 ,host: 8081
     web1.vm.hostname = "web1.dev"
     web1.vm.synced_folder "web1", "/vagrant"
     web1.vm.synced_folder "./files", "/etc/puppet/files"
